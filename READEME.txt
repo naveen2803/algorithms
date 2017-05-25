@@ -1,0 +1,16 @@
+Rename the file challenge.txt to challenge.js
+
+Steps to run this solution
+1. create a new folder and place challenge.js and data.txt in a newly created folder
+2. install nodes
+3. navigate to the folder location using terminal / command prompt
+4. execute "node challenge.js"
+
+Functions
+There is function by the name "readInput" in challenge.js file which is a starting point to the solution.
+This function reads the data in a specific format as in the data.txt.
+After the data is read, this method executes another function called "getAllRoutes()"
+This is the common method for the problems 6 - 10 and needs parameters to be passed.
+
+To see the solution for problems 1 - 5 comment out this method and uncomment the line 29 ( ////console.log(getRouteDistance('A-E-D')); )
+and pass the path for which the distance is to be calculated.

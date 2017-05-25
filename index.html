@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+
+    <section style="padding:15px">
+        <h4>Calculate Distance</h4>
+        <input type="text" id="srcStation" placeholder="Source(Select from A to E)" size="40" maxlength="1"></input>
+        <input type="text" id="dstStation" placeholder="Destination(Select from A to E)" size="40" maxlength="1"></input>
+        <input type="button" onclick="getDistance(document.getElementById('srcStation').value, document.getElementById('dstStation').value)" value="Calculate"></input>
+    </section>
+
+    <section style="padding:15px">
+        <h4>Calculate Path Distance</h4>
+        <input type="button" value="A" onclick="buildPath('A')"></input>
+        <input type="button" value="B" onclick="buildPath('B')"></input>
+        <input type="button" value="C" onclick="buildPath('C')"></input>
+        <input type="button" value="D" onclick="buildPath('D')"></input>
+        <input type="button" value="E" onclick="buildPath('E')"></input>
+        <section style="padding-top:5px">
+            <input type="text" size=40 id="path" disabled="disabled" placeholder="Click on the buttons above to build your path" maxlength="1"></input>
+            <input type="button" value="Calculate" onclick="getDistance('', '', document.getElementById('path').value)"></input>
+            <input type="button" value="Clear" onclick="clearPath()"></input>
+        </section>
+    </section>
+
+
+    <section style="padding:15px">
+        <h4>Number of trips from Source to destination with max stops</h4>
+        <input type="text" id="srcStation_max" placeholder="Source(Select from A to E)" size="40" maxlength="1"></input>
+        <input type="text" id="dstStation_max" placeholder="Destination(Select from A to E)" size="40" maxlength="1"></input>
+        <input type="text" id="stops_max" placeholder="enter max number of stops" size="40"></input>
+        <input type="button" onclick="getTripsMaxStops(document.getElementById('srcStation_max').value, document.getElementById('dstStation_max').value, document.getElementById('stops_max').value)" value="Calculate"></input>
+    </section>
+
+    <!-- Main.js -->
+    <script src="main.js" type="text/JavaScript"></script>
+</body>
+
+</html>
