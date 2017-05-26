@@ -42,7 +42,7 @@ For the test input, the towns are named using the first few letters of the alpha
 
  ## The Solution
 
- Check the source code
+ The solution is implemented using javascript without using any external libraries. Also, I have used mocha for unit testing. Check the source code.
 
  ### How to run it locally
  ```
