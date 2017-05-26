@@ -24,16 +24,16 @@ For the test input, the towns are named using the first few letters of the alpha
 **AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7**
 
 ***Expected Output:***
-Output #1: 9
-Output #2: 5
-Output #3: 13
-Output #4: 22
-Output #5: NO SUCH ROUTE
-Output #6: 2
-Output #7: 3
-Output #8: 9
-Output #9: 9
-Output #10: 7
+1. Output #1: 9
+2. Output #2: 5
+3. Output #3: 13
+4. Output #4: 22
+5. Output #5: NO SUCH ROUTE
+5. Output #6: 2
+6. Output #7: 3
+7. Output #8: 9
+8. Output #9: 9
+9. Output #10: 7
 
 * There must be a way to supply the application with the input data via text file.
 * The application must run and you should provide sufficient evidence that your solution is complete by, as a minimum, indicating that it works correctly against the supplied test data.
