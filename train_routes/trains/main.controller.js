@@ -5,7 +5,8 @@ function MainController(){
     var paths = [];
     function readInput()
     {
-        var data = "AB5,BC4,CD8,DC8,DE6,AD5,CE2,EB3,AE7";
+        const fs = require('fs');
+        var data = fs.readFileSync('./data/inputFile.txt','utf8');
         var nodes = data.trim().split(",");
         for(var i = 0; i < nodes.length; i++)
         {
