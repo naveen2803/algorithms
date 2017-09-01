@@ -13,8 +13,9 @@ function MainController(){
             var nodes = data.trim().split(",");
             for(var i = 0; i < nodes.length; i++)
             {
-                var key = nodes[i].substring(0, nodes[i].length-1);
-                var val = nodes[i].substring(2, nodes[i].length);
+                var n = nodes[i].trim();
+                var key = n.substring(0, n.length-1);
+                var val = n.substring(2, n.length);
 
                 inputs[key] = val;
             }
@@ -57,7 +58,7 @@ function MainController(){
                 var maxStops = routes.filter(function(element, index, array){
                     return (element.length <= args.maxStops + 1);
                 });
-                console.log("\tTrips from " + source + " to " + destination +" with max " + args.maxStops + " stops", maxStops.join());
+                console.log("\tTrips from " + source + " to " + destination +" with max " + args.maxStops + " stops are ", maxStops.length, "(", maxStops.join(), ")");
             }
             else
             {
@@ -84,7 +85,7 @@ function MainController(){
                 var exactStops = routes.filter(function(element, index, array){
                     return (element.length == args.exactStops + 1);
                 });
-                console.log("\tTrips from " + source + " to " + destination +" with exact " + args.exactStops + " stops", exactStops.join());
+                console.log("\tTrips from " + source + " to " + destination +" with exact " + args.exactStops + " stops are ", exactStops.length, "(", exactStops.join(), ")");
             }
             else {
                 console.log(routes);
@@ -139,7 +140,7 @@ function MainController(){
                     var distance = getRouteDistance(route);
                     if(distance < maxDistance) { return element; }
                 });
-                console.log("\tPath from " + source + " to " + destination +"  less than " + maxDistance + " is : ", tripsInRange.join());
+                console.log("\tPath from " + source + " to " + destination +"  less than " + maxDistance + " are", tripsInRange.length, "(",tripsInRange.join(", "), ")");
                 return tripsInRange;
             }
             else {
@@ -220,7 +221,11 @@ function MainController(){
             traverseRoutes("", source, destination, getDirectRoutes(source), args);
             return paths;
         }
-        return "NO SUCH ROUTE";
+        else
+        {
+            return "NO SUCH ROUTE";
+        }
+
     }
 
 
@@ -233,7 +238,6 @@ function MainController(){
                 var path = prefix + source + destination;
                 paths.push(path);
             }
-
             var p = prefix + source;
             var r = p.split("").join("-");
             var d = getRouteDistance(r);
@@ -248,7 +252,7 @@ function MainController(){
             if(args.exactStops) { if( p.length == args.exactStops + 1 ) { break; } }
 
             // loop stopping condition for shortest path problem
-            if(args.computeShortestDistance){ if( p.indexOf(source) >= 1 ) { break; } }
+            if(args.computeShortestDistance){ if( p.indexOf(source) > 1 ) { break; } }
 
             // loop stopping condition for shortest path problem
 
