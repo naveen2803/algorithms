@@ -2,11 +2,10 @@
     "name": "trains",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "scripts": {
         "test": "mocha './test/**/*.spec.js'"
     },
-    "author": "Naveen",
+    "author": "Naveen Malhotra",
     "license": "MIT",
     "dependencies": {
         "mocha": "^3.4.2"

@@ -1,21 +1,24 @@
 'use strict'
 
 function MainController(){
-    var inputs = {};
+    var inputs;
     var paths = [];
     function readInput()
     {
-        const fs = require('fs');
-        var data = fs.readFileSync('./data/inputFile.txt','utf8');
-        var nodes = data.trim().split(",");
-        for(var i = 0; i < nodes.length; i++)
+        if(inputs === undefined)
         {
-            var key = nodes[i].substring(0, nodes[i].length-1);
-            var val = nodes[i].substring(2, nodes[i].length);
+            inputs = {};
+            const fs = require('fs');
+            var data = fs.readFileSync('./data/inputFile.txt','utf8');
+            var nodes = data.trim().split(",");
+            for(var i = 0; i < nodes.length; i++)
+            {
+                var key = nodes[i].substring(0, nodes[i].length-1);
+                var val = nodes[i].substring(2, nodes[i].length);
 
-            inputs[key] = val;
+                inputs[key] = val;
+            }
         }
-
         return inputs;
     }
 
@@ -26,7 +29,7 @@ function MainController(){
 
         var path = source + "-" + destination;
         var distance = getRouteDistance(path);
-        console.log("Distance from " + source + " to " + destination + " is " + distance);
+        console.log("\tDistance from " + source + " to " + destination + " is " + distance);
         return distance;
     }
 
@@ -37,7 +40,7 @@ function MainController(){
             return null;
 
         var distance = getRouteDistance(path);
-        console.log("Distance for path " + path + " is " + distance);
+        console.log("\tDistance for path " + path + " is " + distance);
         return distance;
     }
 
@@ -54,7 +57,7 @@ function MainController(){
                 var maxStops = routes.filter(function(element, index, array){
                     return (element.length <= args.maxStops + 1);
                 });
-                console.log("Trips from " + source + " to " + destination +" with max " + args.maxStops + " stops", maxStops.join());
+                console.log("\tTrips from " + source + " to " + destination +" with max " + args.maxStops + " stops", maxStops.join());
             }
             else
             {
@@ -81,7 +84,7 @@ function MainController(){
                 var exactStops = routes.filter(function(element, index, array){
                     return (element.length == args.exactStops + 1);
                 });
-                console.log("Trips from " + source + " to " + destination +" with exact " + args.exactStops + " stops", exactStops.join());
+                console.log("\tTrips from " + source + " to " + destination +" with exact " + args.exactStops + " stops", exactStops.join());
             }
             else {
                 console.log(routes);
@@ -108,11 +111,11 @@ function MainController(){
                     return getRouteDistance(route);
                 });
 
-                console.log("Shortest distance from " + source + " to " + destination +" is ", Math.min.apply(Math, distance));
+                console.log("\tShortest distance from " + source + " to " + destination +" is ", Math.min.apply(Math, distance));
                 return Math.min.apply(Math, distance);
             }
             else {
-                console.log("NO SUCH ROUTE");
+                console.log("\tNO SUCH ROUTE");
                 return routes;
             }
         }
@@ -136,11 +139,11 @@ function MainController(){
                     var distance = getRouteDistance(route);
                     if(distance < maxDistance) { return element; }
                 });
-                console.log("Path from " + source + " to " + destination +"  less than " + maxDistance + " is : ", tripsInRange.join());
+                console.log("\tPath from " + source + " to " + destination +"  less than " + maxDistance + " is : ", tripsInRange.join());
                 return tripsInRange;
             }
             else {
-                console.log("NO SUCH ROUTE");
+                console.log("\tNO SUCH ROUTE");
                 return routes;
             }
         }
@@ -151,7 +154,6 @@ function MainController(){
     // For problem 1 - 5
     function getRouteDistance(path)
     {
-        //var inputs = readInput();
         var distance = 0;
         var strPath = path.split('-').map(String);
         for(var i = 0; i < strPath.length -1; i++)
